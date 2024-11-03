@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JM CAPS - Bolsos Modernos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            color: #000;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Encabezado */
+        header {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-bottom: 2px solid #d4af37; /* Línea dorada masculina */
+        }
+
+        header img {
+            height: 60px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Barra de navegación */
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+        .back-button {
+            position: absolute;
+            left: 90px;
+            top: 16px;
+            color: #d4af37;
+            font-size: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-button:hover {
+            color: #fff;
+        }
+
+        .back-button span {
+            margin-left: 8px;
+            font-size: 16px;
+        }
+        /* Sección principal */
+        .main-content {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #f3f3f3; /* Fondo gris claro */
+            border-bottom: 2px solid #a38068; /* Línea dorada */
+        }
+
+        .main-content h2 {
+            color: #a38068;
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-content p {
+            color: #333;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+
+        /* Productos */
+        .product-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 280px;
+            text-align: center;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product h3 {
+            color: #000;
+            font-size: 22px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .product p {
+            color: #555;
+            font-size: 16px;
+            padding: 0 15px;
+            margin-bottom: 15px;
+        }
+
+        .product .price {
+            color: #d4af37;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .product button {
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #d4af37;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .product button:hover {
+            background-color: #d4af37;
+            transform: scale(1.05);
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            border-top: 2px solid #d4af37; /* Línea dorada masculina */
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Estilos para la ventana emergente */
+        .modal {
+            display: none; /* Ocultar por defecto */
+            position: fixed; /* Mantener la ventana en la pantalla */
+            z-index: 1; /* Colocarla en el frente */
+            left: 0;
+            top: 0;
+            width: 100%; /* Ancho completo */
+            height: 100%; /* Alto completo */
+            overflow: auto; /* Habilitar desplazamiento si es necesario */
+            background-color: rgba(0,0,0,0.4); /* Fondo negro con opacidad */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% desde la parte superior y centrado */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Ancho de la ventana emergente */
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .social-icon {
+            width: 40px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <img src="https://raw.githubusercontent.com/JMCAPS/P-gina-web-jmcaps/refs/heads/main/LOGO.jpeg" alt="Logo JM CAPS">
+        <nav>
+            <a href="#" onclick="openModal()">Redes Sociales</a>
+        </nav>
+    </header>
+    <header>
+        <a href="JM CAPS PRINCIPAL.html" class="back-button">
+            &#x2190; <span>Regresar</span>
+        </a>
+        <h1>Sección de Caballero</h1>
+    </header>
+    <!-- Sección principal -->
+    <div class="main-content" id="home">
+        <h2>CROSSBODY DE DAMA Y CABALLERO</h2>
+        <p>Explora nuestra exclusiva colección de bolsos crossbody para dama y caballero, creados para hacerte destacar con estilo y personalidad.</p>
+    </div>
+
+    <!-- Galería de productos -->
+    <section class="product-gallery" id="productos">
+        <div class="product">
+            <img src="https://raw.githubusercontent.com/JMCAPS/P-gina-web-jmcaps/refs/heads/main/MODELO1.jpeg" alt="Producto 1">
+            <h3>BANDOLERA CROSSBODY</h3>
+            <p>Un bolso elegante para cualquier ocasión.</p>
+            <p class="price">$499.00</p>
+            <button onclick="location.href='https://wa.me/525544759776?text=Estoy%20interesado%20en%20el%20producto%20BANDOLERA%20CROSSBODY'">Comprar Ahora</button>
+        </div>
+        <div class="product">
+            <img src="https://raw.githubusercontent.com/JMCAPS/P-gina-web-jmcaps/refs/heads/main/MODELO2.jpeg" alt="Producto 2">
+            <h3>BANDOLERA CROSSBODY</h3>
+            <p>Elegancia y comodidad: el crossbody perfecto para tu día a día.</p>
+            <p class="price">$499.00</p>
+            <button onclick="location.href='https://wa.me/525544759776?text=Estoy%20interesado%20en%20el%20producto%20BANDOLERA%20CROSSBODY'">Comprar Ahora</button>
+        </div>
+        <div class="product">
+            <img src="https://raw.githubusercontent.com/JMCAPS/P-gina-web-jmcaps/refs/heads/main/MODELO3.jpeg" alt="Producto 3">
+            <h3>BANDOLERA CROSSBODY</h3>
+            <p>Perfecto para un día activo y casual.</p>
+            <p class="price">$499.00</p>
+            <button onclick="location.href='https://wa.me/525544759776?text=Estoy%20interesado%20en%20el%20producto%20BANDOLERA%20CROSSBODY'">Comprar Ahora</button>
+        </div>
+        <div class="product">
+            <img src="https://raw.githubusercontent.com/JMCAPS/P-gina-web-jmcaps/refs/heads/main/MODELO8.jpeg" alt="Producto 8">
+            <h3>CROSSBODY COACH</h3>
+            <p>Cómodo y perfecto para tu estilo.</p>
+            <p class="price">$499.00</p>
+            <button onclick="location.href='https://wa.me/525544759776?text=Estoy%20interesado%20en%20el%20producto%20CROSSBODY%20COACH'">Comprar Ahora</button>
+        </div>
+        <!-- Puedes agregar más productos aquí -->
+    </section>
+
+    <!-- Ventana emergente para redes sociales -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Redes Sociales</h2>
+            <p>Selecciona una red social para seguirnos:</p>
+            <a href="https://www.instagram.com/invites/contact/?igsh=feflm7etwaf7&utm_content=w2kp31e" target="_blank">Instagram</a>
+            <a href="https://www.tiktok.com/@jm_caps_oficial?_t=8qskgyISbPZ&_r=1" target="_blank">Tiktok</a>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 JM CAPS. Todos los derechos reservados.</p>
+        <p>Contacto: <a href="mailto:info@jmcaps.com" style="color: #d4af37;">info@jmcaps.com</a></p>
+    </footer>
+
+    <script>
+        // Función para abrir la ventana modal
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        // Función para cerrar la ventana modal
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        // Cerrar la ventana modal si se hace clic fuera de ella
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
